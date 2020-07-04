@@ -2,7 +2,12 @@ package com.example.vendedoresambulantes;
 
         import androidx.appcompat.app.AppCompatActivity;
 
+        import android.content.Context;
+        import android.webkit.JavascriptInterface;
         import android.os.Bundle;
+        import android.webkit.WebChromeClient;
+        import android.webkit.WebView;
+        import android.webkit.WebViewClient;
         import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,29 +16,41 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-//    public void teste(View v){
-//        TextView    tProd = findViewById(R.id.edTipoProd),
-//                    nomVend = findViewById(R.id.edNomeVendedor),
-//                    cid = findViewById(R.id.edCidade),
-//                    dSem = findViewById(R.id.edDiaSemana);
-//
-//        String  v1 = tProd.getText().toString(),
-//                v2 = nomVend.getText().toString(),
-//                v3 = cid.getText().toString(),
-//                v4 = dSem.getText().toString(),
-//                confirmacao = "";
-//
-//        Banco db = new Banco(this);
-//        if (db.insere(v1, v2, v3, v4)){
-//            confirmacao = "inserido com sucesso";
-//        } else{
-//            confirmacao = "Erro ao inserir";
-//        }
-//
-//        Toast.makeText(this, confirmacao, Toast.LENGTH_SHORT).show();
-//    }
+        WebView mv = findViewById(R.id.webview);
+
+        mv.setWebChromeClient(new WebChromeClient());
+        mv.setWebViewClient(new WebViewClient());
+        mv.getSettings().setJavaScriptEnabled(true);
+
+        mv.loadUrl("file://android_asset/index.html");
+
+        mv.addJavascriptInterface(new Ponte(this), "Android");
+    }
+}
+
+    class Ponte {
+        Context context;
+        public Ponte(Context context) {
+            this.context = context;
+        }
+
+        @JavascriptInterface
+        public void confirmacao(String data) {
+            Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
+        }
+
+        @JavascriptInterface
+        public boolean insere (String tipoProduto, String nomeVendedor, String cidadeOrigen, String diaSemana) {
+            Banco db = new Banco(this.context);
+            if (db.insere(tipoProduto, nomeVendedor, cidadeOrigen, diaSemana)) {
+                confirmacao("Inserido com Sucesso");
+                return true;
+            } else {
+                confirmacao("Problemas na Inserção");
+                return false;
+            }
+        }
 //
 //    public void consulta (View v){
 //        TextView ed = findViewById(R.id.edCon);
@@ -46,4 +63,13 @@ public class MainActivity extends AppCompatActivity {
 //        Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show();
 //
 //    }
+
+    @JavascriptInterface
+    public String consultar() {
+        String retorno="";
+        Banco db = new Banco(this.context);
+        retorno = db.consulta();
+        return retorno;
+    }
 }
+
