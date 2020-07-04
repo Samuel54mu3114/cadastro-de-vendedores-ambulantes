@@ -23,46 +23,35 @@ public class MainActivity extends AppCompatActivity {
         mv.setWebViewClient(new WebViewClient());
         mv.getSettings().setJavaScriptEnabled(true);
 
-        mv.loadUrl("file://android_asset/index.html");
+        mv.loadUrl("file:///android_asset/contact.html");
 
         mv.addJavascriptInterface(new Ponte(this), "Android");
     }
 }
 
-    class Ponte {
-        Context context;
-        public Ponte(Context context) {
-            this.context = context;
-        }
+class Ponte {
+    Context context;
 
-        @JavascriptInterface
-        public void confirmacao(String data) {
-            Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
-        }
+    public Ponte(Context context) {
+        this.context = context;
+    }
 
-        @JavascriptInterface
-        public boolean insere (String tipoProduto, String nomeVendedor, String cidadeOrigen, String diaSemana) {
-            Banco db = new Banco(this.context);
-            if (db.insere(tipoProduto, nomeVendedor, cidadeOrigen, diaSemana)) {
-                confirmacao("Inserido com Sucesso");
-                return true;
-            } else {
-                confirmacao("Problemas na Inserção");
-                return false;
-            }
+    @JavascriptInterface
+    public void confirmacao(String data) {
+        Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
+    }
+
+    @JavascriptInterface
+    public boolean insere (String tipoProduto, String nomeVendedor, String cidadeOrigen, String diaSemana) {
+        Banco db = new Banco(this.context);
+        if (db.insere(tipoProduto, nomeVendedor, cidadeOrigen, diaSemana)) {
+            confirmacao("Inserido com Sucesso");
+            return true;
+        } else {
+            confirmacao("Problemas na Inserção");
+            return false;
         }
-//
-//    public void consulta (View v){
-//        TextView ed = findViewById(R.id.edCon);
-//
-//        Banco db = new Banco(this);
-//        String dados = db.consulta();
-//
-//        ed.setText(dados);
-//
-//        Toast.makeText(this, "teste", Toast.LENGTH_SHORT).show();
-//
-//    }
+    }
 
     @JavascriptInterface
     public String consultar() {
