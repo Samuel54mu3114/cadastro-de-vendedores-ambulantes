@@ -10,6 +10,8 @@ package com.example.vendedoresambulantes;
         import android.webkit.WebViewClient;
         import android.widget.Toast;
 
+        import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -59,6 +61,11 @@ class Ponte {
         Banco db = new Banco(this.context);
         retorno = db.consulta();
         return retorno;
+    }
+
+    @JavascriptInterface
+    public void erros(String valor){
+        System.out.println(valor);
     }
 }
 

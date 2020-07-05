@@ -73,7 +73,7 @@ public class Banco extends SQLiteOpenHelper {
                     nomeVendedor = c.getString(2);
                     cidadeOrigen = c.getString(3);
                     diaSemana = c.getString(4);
-                    resultado += tipoProd + "\n" + nomeVendedor + "\n" + cidadeOrigen + "\n" + diaSemana + "\n\n";
+                    resultado += "Produto: " + tipoProd + "\n" + "Vendedor: " + nomeVendedor + "\n" + "Cidade que mora: " + cidadeOrigen + "\n" + "Dias que vai vir: " + diaSemana + "\n\n";
                 }while(c.moveToNext());
             }
         }catch (Error e){
