@@ -5,103 +5,119 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Cadastro</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="./CSS/Cadastro.css" />
-		<link rel="stylesheet" href="./CSS/pretty-checkbox.min.css" />
-	</head>
-	<body class="is-preload">
-		<div id="page-wrapper">
-			<!-- Main -->
-				<section id="main" class="container medium">
-					<header>
-						<h2>Cadastro</h2>
-					</header>
-					<div class="box">
-						<form method="post" action="#">
-							<div class="row gtr-50 gtr-uniform">
-								<div class="col-6 col-12-mobilep">
-									<input type="text" name="produto" id="produto" value="" placeholder="Tipo de produto:" />
-								</div>
-								<div class="col-6 col-12-mobilep">
-									<input type="text" name="vendedor" id="vendedor" value="" placeholder="Nome do vendedor:" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="cidade" id="cidade" value="" placeholder="Cidade:" />
-								</div>
-								
-								<div class="col-12">
-									<br>
-									<h4><b>Dias da Semana:</b></h4>
-									<div class="pretty p-default p-curve p-thick p-smooth">
-										<input type="checkbox" />
-										<div class="state p-danger-o">
-											<label>Segunda-Feira</label>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-12">
-									<div class="pretty p-default p-curve p-thick p-smooth">
-										<input type="checkbox" />
-										<div class="state p-danger-o">
-											<label>Terça-Feira</label>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-12">
-									<div class="pretty p-default p-curve p-thick p-smooth">
-										<input type="checkbox" />
-										<div class="state p-danger-o">
-											<label>Quarta-Feira</label>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-12">
-									<div class="pretty p-default p-curve p-thick p-smooth">
-										<input type="checkbox" />
-										<div class="state p-danger-o">
-											<label>Quinta-Feira</label>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-12">
-									<div class="pretty p-default p-curve p-thick p-smooth">
-										<input type="checkbox" />
-										<div class="state p-danger-o">
-											<label>Sexta-Feira</label>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-12">
-									<div class="pretty p-default p-curve p-thick p-smooth">
-										<input type="checkbox" />
-										<div class="state p-danger-o">
-											<label>Sábado</label>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-12">
-									<br>
-									<a href="#" class="button">Cadastrar</a>
-                                    <a href="#" class="button gray" class="gray">Listagem</a>
+
+<head>
+	<title>Cadastro</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="./CSS/Cadastro.css" />
+	<link rel="stylesheet" href="./CSS/pretty-checkbox.min.css" />
+</head>
+
+<body class="is-preload">
+	<div id="page-wrapper">
+		<!-- Main -->
+		<section id="main" class="container medium">
+			<header>
+				<h2>Cadastro</h2>
+			</header>
+			<div class="box">
+				<form method="post" action="#">
+					<div class="row gtr-50 gtr-uniform">
+
+						<div class="col-6 col-12-mobilep">
+							<input type="text" name="produto" id="produto" placeholder="Tipo de produto:" required />
+						</div>
+
+						<div class="col-6 col-12-mobilep">
+							<input type="text" name="vendedor" id="vendedor" placeholder="Nome do vendedor:" required />
+						</div>
+
+						<div class="col-12">
+							<input type="text" name="cidade" id="cidade" placeholder="Cidade:" required />
+						</div>
+
+						<div class="col-12">
+							<br>
+							<h4><b>Dias da Semana:</b></h4>
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="segunda" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Segunda-Feira</label>
 								</div>
 							</div>
-						</form>
+						</div>
+
+						<div class="col-12">
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="terca" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Terça-Feira</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="quarta" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Quarta-Feira</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="quinta" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Quinta-Feira</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="sexta" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Sexta-Feira</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="sabado" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Sábado</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="pretty p-default p-curve p-thick p-smooth">
+								<input id="domingo" type="checkbox" />
+								<div class="state p-danger-o">
+									<label>Domingo</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<br>
+							<a href="contact.html" class="button" onclick="insereDados();">Cadastrar</a>
+							<a href="lista.html" class="button gray" class="gray">Listagem</a>
+						</div>
 					</div>
-				</section>
-		</div>
+				</form>
+			</div>
+		</section>
+	</div>
 
-		<!-- Scripts -->
-			<script src="./JS/jquery.min.js"></script>
-			<script src="./JS/assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="./JS/index.js"></script>
+	<script src="./JS/jquery.min.js"></script>
+	<script src="./JS/assets/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>
